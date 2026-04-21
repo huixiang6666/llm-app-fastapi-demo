@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大模型应用开发助手</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="app-layout">
+        <!-- 左侧栏 -->
+        <aside class="sidebar">
+            <div class="sidebar-top">
+                <div class="brand">
+                    <div class="brand-logo">AI</div>
+                    <div class="brand-text">
+                        <h1>大模型助手</h1>
+                        <p>LLM App Demo</p>
+                    </div>
+                </div>
+
+                <button id="new-chat-btn" class="sidebar-btn primary-btn">+ 新建对话</button>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="section-title">对话记录</div>
+                <div id="history-list" class="history-list">
+                    <div class="history-empty">暂无历史记录</div>
+                </div>
+            </div>
+
+            <div class="sidebar-section sidebar-bottom">
+                <div class="section-title">功能区（预留）</div>
+                <div class="feature-list">
+                    <button class="feature-btn">Prompt 模板</button>
+                    <button class="feature-btn">文件问答</button>
+                    <button class="feature-btn">对话导出</button>
+                    <button class="feature-btn danger-btn" id="clear-btn">清空记录</button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- 主区域 -->
+        <main class="main-panel">
+            <section class="welcome-panel">
+                <h2>欢迎使用“大模型应用开发助手”</h2>
+                <p>有什么问题随时问</p>
+            </section>
+
+            <section id="chat-box" class="chat-box">
+                <div class="message bot">
+                    <div class="message-role">助手</div>
+                    <div class="message-text">你好，我是你的大模型应用开发助手。你可以问我：FastAPI、Prompt、RAG、Agent、多轮对话、项目结构设计等问题。</div>
+                    <div class="message-time">系统消息</div>
+                </div>
+            </section>
+
+            <section class="input-panel">
+                <div class="input-wrapper">
+                    <textarea id="question-input" placeholder="请输入你的问题，按 Enter 发送，Shift + Enter 换行..."></textarea>
+                    <div class="input-actions">
+                        <span class="input-tip">支持连续提问</span>
+                        <button id="send-btn" class="send-btn">发送</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
