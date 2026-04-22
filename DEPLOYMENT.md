@@ -182,7 +182,7 @@ pip install fastapi uvicorn openai python-dotenv
 
 你可以用两种方式配置。
 
-### 方式 A：使用 `.env` 文件（推荐）
+### 方式 A：使用 `.env` 文件
 
 在项目根目录新建一个 `.env` 文件：
 
