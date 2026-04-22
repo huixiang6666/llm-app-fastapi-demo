@@ -22,11 +22,10 @@ DEFAULT_BASE_URLS = {
 def _default_llm_settings() -> dict:
     return {
         "provider": "qwen",
-        "api_key": getattr(settings, "DASHSCOPE_API_KEY", "") or "",
-        "base_url": getattr(settings, "DASHSCOPE_BASE_URL", "") or DEFAULT_BASE_URLS["qwen"],
-        "model": getattr(settings, "MODEL_NAME", "qwen-plus") or "qwen-plus"
+        "api_key": "",
+        "base_url": DEFAULT_BASE_URLS["qwen"],
+        "model": ""
     }
-
 
 def _ensure_settings_file():
     DATA_DIR.mkdir(exist_ok=True)
@@ -72,8 +71,14 @@ def normalize_llm_settings(payload: dict) -> dict:
     base_url = (payload.get("base_url") or "").strip()
 
     if not model:
-        default_model = _default_llm_settings()["model"]
-        model = default_model if provider == "qwen" else ""
+        if provider == "qwen":
+              model = "qwen-plus"
+        elif provider == "openai":
+              model = "gpt-4o-mini"
+        elif provider == "deepseek":
+              model = "deepseek-chat"
+        else:
+              model = ""
 
     if not base_url:
         base_url = DEFAULT_BASE_URLS.get(provider, "")

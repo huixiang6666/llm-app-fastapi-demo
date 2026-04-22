@@ -17,6 +17,16 @@ def _build_client(config: dict) -> OpenAI:
 
 def ask_llm(question: str, history_messages: list | None = None) -> str:
     config = load_llm_settings()
+
+    if not config.get("api_key"):
+        raise ValueError("未检测到 API Key，请先在前端页面完成配置。")
+
+    if not config.get("base_url"):
+        raise ValueError("未检测到 Base URL，请先在前端页面完成配置。")
+
+    if not config.get("model"):
+        raise ValueError("未检测到模型名称，请先在前端页面完成配置。")
+
     client = _build_client(config)
 
     messages = [
